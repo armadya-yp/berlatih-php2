@@ -16,30 +16,42 @@
             $kata="";
             $stat="";
             for($i=0; $i< $p; $i++){
-                $kata=$kata . $tulisan[$p-$i-1];
+                $kata=$kata . $q[$p-$i-1];
             }
             $hasil="";
             if ($kata==$tulisan){
-                $stat="Palindrome" ;
+                $stat="1" ;
             }else{
-                $stat="Bukan Palindrome" ;
+                $stat="0" ;
             }
-            echo "Output: " . $stat . "<br>";
+            return $stat;
         }
         
-        function palindrome_angka()
+        function palindrome_angka($masuk){
+            $tampilkan=0;
+            if(cekpalindrome($masuk)==1){
+                for($i=$masuk+1; $i<10000; $i++){
+                    if(cekpalindrome($i)==1){
+                        $tampilkan=$i;
+                        break;
+                    }    
+                }
+            }else{
+                for($i=$masuk+1; $i<10000; $i++){
+                    if(cekpalindrome($i)==1){
+                        $tampilkan=$i;
+                        break;
+                    }    
+                }
+            }
+            return $tampilkan;
+        }
        
-        cekpalindrome(8) ; // 9
-        cekpalindrome(10) ; // 11
-        cekpalindrome(117); // 121
-        cekpalindrome(175); // 181
-        cekpalindrome(1000); // 1001
-
-        palindrome_angka(8) ; // 9
-        palindrome_angka(10) ; // 11
-        palindrome_angka(117); // 121
-        palindrome_angka(175); // 181
-        palindrome_angka(1000); // 1001
+        echo "Palindrome 8 => " . palindrome_angka(8) . "<br>"; // 9
+        echo "Palindrome 10 => " . palindrome_angka(10) . "<br>" ; // 11
+        echo "Palindrome 117 => " . palindrome_angka(117) . "<br>"; // 121
+        echo "Palindrome 175 => " . palindrome_angka(175) . "<br>"; // 181
+        echo "Palindrome 1000 => " . palindrome_angka(1000) . "<br>"; // 1001
     ?>
 </body>
 </html>
