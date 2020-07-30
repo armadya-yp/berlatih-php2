@@ -12,11 +12,6 @@
         
         function skor_terbesar($arr){
             $pa=count($arr);
-            $tampung=[
-                    ["Laravel" => ["nama" => "", "kelas" => "", "nilai" => "0"]],
-                    ["React Native" => ["nama" => "", "kelas" => "", "nilai" => "0"]],
-                    ["React JS" => ["nama" => "", "kelas" => "", "nilai" => "0"]]
-                    ]; 
             $ArLa=[];
             $ArRN=[];
             $ArRJ=[];        
@@ -24,37 +19,38 @@
             $nilaiLa=0;
             $nilaiRN=0;
             $nilaiRJ=0;
-            foreach($arr as $a => $a_value){
-                if($a_value["kelas"]="Laravel")
-                {
-                    if((int)($a_value["nilai"]) > $nilaiLa){    
-                        $nilaiLa=(int)($a_value["nilai"]);
-                        $ArLa["nama"] =$a_value["nama"];
-                        $ArLa["kelas"]=$a_value["kelas"];
-                        $ArLa["nilai"]=$a_value["nilai"];
+            foreach($arr as $a ){
+                echo "<br> " . $a["nama"] . "--" . $a["kelas"] . "--" . $a["nilai"];
+                if($a["kelas"]=="Laravel"){
+                    if((int)($a["nilai"]) > $nilaiLa){    
+                        $nilaiLa=(int)($a["nilai"]);
+                        $ArLa["nama"]=$a["nama"];
+                        $ArLa["kelas"]=$a["kelas"];
+                        $ArLa["nilai"]=$a["nilai"];
                     };
-                    echo "<br>LAV " . $a_value["kelas"];
-                } elseif($a_value["kelas"]="React Native")
+                } elseif($a["kelas"]=="React Native")
                 {
-                    if((int)($a_value["nilai"]) > $nilaiRN){
-                        $nilaiRN=(int)($a_value["nilai"]);
-                        $ArRN["nama"] =$a_value["nama"];
-                        $ArRN["kelas"]=$a_value["kelas"];
-                        $ArRN["nilai"]=$a_value["nilai"];
+                    echo "<br> RN " . $a["nama"] . "--" . $a["kelas"] . "--" . $a["nilai"];
+                    if((int)($a["nilai"]) > $nilaiRN){
+                        $nilaiRN=(int)($a["nilai"]);
+                        $ArRN["nama"]=$a["nama"];
+                        $ArRN["kelas"]=$a["kelas"];
+                        $ArRN["nilai"]=$a["nilai"];
                     };
-                    echo "<br>ReN " . $a_value["kelas"];
-                } elseif($a_value["kelas"]="React JS")
+                } elseif($a["kelas"]=="React JS")
                 {
-                    if((int)($a_value["nilai"]) > $nilaiRJ){
-                        $nilaiRJ=(int)($a_value["nilai"]);
-                        $ArRJ["nama"] =$a_value["nama"];
-                        $ArRJ["kelas"]=$a_value["kelas"];
-                        $ArRJ["nilai"]=$a_value["nilai"];
-                    };
-                    echo "<br>RJ  " . $a_value["kelas"];
-                };
-            };
-            $ArALL=$ArALL+$ArLa+$ArRN+$ArRJ;
+                    if((int)($a["nilai"]) > $nilaiRJ){
+                        $nilaiRJ=(int)($a["nilai"]);
+                        $ArRJ["nama"]=$a["nama"];
+                        $ArRJ["kelas"]=$a["kelas"];
+                        $ArRJ["nilai"]=$a["nilai"];
+                   };
+                }
+            }
+            echo "<br>";
+            $ArALL["Laravel"]= $ArLa;
+            $ArALL["React Native"]= $ArRN;
+            $ArALL["React JS"]= $ArRJ;
             return $ArALL;
         }
             
